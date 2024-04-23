@@ -6,8 +6,13 @@ data = {
     'c': [False, True, False]
 }
 
-with open('data.pickle', 'wb') as f:
-    pickle.dump(data, f)
+#with open('data.pickle', 'wb') as f:
+#    pickle.dump(data, f)
+
+f = open('data.pickle', 'wb')
+pickle.dump(data, f)
+f.close()
+
 
 del data
 try:
@@ -17,6 +22,6 @@ except NameError:
 
 
 with open('data.pickle', 'rb') as f:
-    data = pickle.load(f)
+    print(pickle.load(f))
 
-print(data['a'])
+#print(data['a'])
