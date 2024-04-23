@@ -10,3 +10,11 @@ lst[1]['a'] = 5
 print(lst)
 print(plytka_kopie_lst)
 print(hluboka_kopie_lst)
+
+a = []
+a.append(5)
+print(a)
+
+a = list(range(5))
+a.append(5)
+print(a)
