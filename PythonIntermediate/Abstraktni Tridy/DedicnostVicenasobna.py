@@ -33,6 +33,7 @@ class PracujiciStudent(Zamestnanec, Student):
     def vrat_vydelek(self):
         return self.sazba * self.pocet_odpracovanych_hodin + self.stipendium
 
+# PracujiciStudent => Zamestanec => Student => Osoba
 if __name__ == "__main__":
     os1 = Osoba("Henry", 54)
     os2 = Zamestnanec("Jack", 36, 20, 160)
