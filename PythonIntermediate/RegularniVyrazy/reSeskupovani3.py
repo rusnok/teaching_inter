@@ -1,6 +1,6 @@
 import re
 
-pattern = r"a(la){4}"
+pattern = r"a((la){4})"
 text = "Ola zpivala alalala alalalala"
 print(text)
 print(re.findall(pattern, text))
