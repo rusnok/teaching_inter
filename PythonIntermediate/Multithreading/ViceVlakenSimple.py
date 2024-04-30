@@ -31,7 +31,7 @@ urls = [
         "https://jsonplaceholder.typicode.com/comments/2",
         "https://jsonplaceholder.typicode.com/comments/3"]
 
-urls = ["https://jsonplaceholder.typicode.com/comments/" + str(x) for x in range(30)]
+#urls = ["https://jsonplaceholder.typicode.com/comments/" + str(x) for x in range(30)]
 a = time.time()
 #with_threading_func(urls)
 wo_threading_func(urls)
