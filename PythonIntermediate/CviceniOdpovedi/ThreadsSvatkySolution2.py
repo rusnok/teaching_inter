@@ -16,23 +16,26 @@ def uloz_jmena(datumy, dest):
             a = requests.get(f"https://svatky.adresa.info/txt?date={datum}")
             f.write(a.text.split(";")[-1])
 
+dates_part = all_date_formatted
+
 
 t = time.time()
-uloz_jmena(all_date_formatted, 'vsechno')
-print(f"single thread time: {time.time() -t}")
 
-t = time.time()
 
 if __name__ == "__main__":
-    t1 = threading.Thread(target=uloz_jmena, args=(all_date_formatted[:183], 'vsechno_01'))
-    t2 = threading.Thread(target=uloz_jmena, args=(all_date_formatted[183:], 'vsechno_02'))
+    threads = []
+    n = 16
+    step = len(dates_part)/n
+    for i in range(n):
+        index1 = int(i * step)
+        index2 = int((i + 1) * step)
+        th = threading.Thread(target=uloz_jmena, args=(dates_part[index1:index2], 'vsechno_'+str(i)))
+        th.start()
+        threads.append(th)
 
-    t1.start()
-    t2.start()
-
-    t1.join()
-    t2.join()
+    for th in threads:
+        th.join()
 
     print("Done!")
 
-print(f"two threads time: {time.time() -t}")
+print(f"threads time: {time.time() -t}")
